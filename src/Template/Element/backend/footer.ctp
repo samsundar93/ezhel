@@ -1,0 +1,1 @@
+<footer><p class="text-center">All right reserved by <a href="http://ezhel.com">EZHEL</a></p></footer>

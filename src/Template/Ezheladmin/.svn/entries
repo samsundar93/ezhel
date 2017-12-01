@@ -1,0 +1,62 @@
+10
+
+dir
+102
+http://192.168.1.7/svn_drycleaning/src/Template/Dryadmin
+http://192.168.1.7/svn_drycleaning
+
+
+
+2017-04-18T10:02:12.599661Z
+101
+sundaramoorthy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+b471198e-b318-4afd-845f-bff6c5f57634
+
+Categories
+dir
+
+Customers
+dir
+
+Discounts
+dir
+
+Items
+dir
+
+Orders
+dir
+
+Outlets
+dir
+
+Reports
+dir
+
+Reviews
+dir
+
+Serviceproviders
+dir
+
+
+
+add
+
+Users
+dir
+

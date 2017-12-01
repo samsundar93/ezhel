@@ -1,0 +1,93 @@
+<div class="navbar-default sidebar" role="navigation">
+
+    <div class="sidebar-nav navbar-collapse slimscrollsidebar">
+        <div class="user-profile">
+            <div class="dropdown user-pro-body">
+                <div>
+                    <img src="<?php echo ADMIN_IMG ?>genu.jpg" alt="user-img" class="img-circle"></div>
+
+            </div>
+        </div>
+
+        <ul class="nav" id="side-menu">
+
+            <li>
+                <a href="<?php echo ADMIN_BASE_URL ?>users/dashboard" class="waves-effect active"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu"> Dashboard </span></a>
+            </li>
+
+
+            <li>
+                <a href="<?php echo ADMIN_BASE_URL ?>users/setting" class="waves-effect"><i class="ti-settings"></i> <span class="hide-menu">Site Setting</span>
+                </a>
+            </li>
+
+
+            <li>
+                <a href="javascript:void(0);" class="waves-effect"><i class="icon-people fa-fw"></i> <span class="hide-menu">Category<span class="fa arrow"></span></span>
+                </a>
+                <ul class="nav nav-second-level collapse">
+                    <li> <a href="<?php echo ADMIN_BASE_URL?>categories">Management</a></li>
+                    <li> <a href="<?php echo ADMIN_BASE_URL?>categories/addedit/">Category AddEdit</a></li>
+                </ul>
+            </li>
+
+
+            <li>
+                <a href="javascript:void(0);" class="waves-effect"><i class="icon-people fa-fw"></i> <span class="hide-menu">Items<span class="fa arrow"></span></span>
+                </a>
+                <ul class="nav nav-second-level collapse">
+                    <li> <a href="<?php echo ADMIN_BASE_URL?>items">Item Management</a></li>
+                    <li> <a href="<?php echo ADMIN_BASE_URL?>items/addedit/">Item AddEdit</a></li>
+                </ul>
+            </li>
+
+
+            <li>
+                <a href="javascript:void(0);" class="waves-effect"><i class="icon-people fa-fw"></i> <span class="hide-menu">Discount<span class="fa arrow"></span></span>
+                </a>
+                <ul class="nav nav-second-level collapse">
+                    <li> <a href="<?php echo ADMIN_BASE_URL?>discounts">Discount Management</a></li>
+                    <li> <a href="<?php echo ADMIN_BASE_URL?>discounts/addedit/">Discount AddEdit</a></li>
+                </ul>
+            </li>
+
+
+            <li>
+                <a href="javascript:void(0);" class="waves-effect"><i class="icon-people fa-fw"></i> <span class="hide-menu">Customer<span class="fa arrow"></span></span>
+                </a>
+                <ul class="nav nav-second-level collapse">
+                    <li> <a href="<?php echo ADMIN_BASE_URL ?>customers">Management</a></li>
+                    <li> <a href="<?php echo ADMIN_BASE_URL ?>customers/addedit/">Customer Add</a></li>
+                </ul>
+            </li>
+
+
+            <li>
+                <a href="<?php echo ADMIN_BASE_URL ?>orders" class="waves-effect"><i class="icon-people fa-fw"></i> <span class="hide-menu">Orders</span>
+                </a>
+            </li>
+
+
+            <li>
+                <a href="<?php echo ADMIN_BASE_URL ?>reports" class="waves-effect"><i class="icon-people fa-fw"></i> <span class="hide-menu">Reports</span>
+                </a>
+            </li>
+
+
+            <li>
+                <a href="<?php echo ADMIN_BASE_URL ?>reviews" class="waves-effect"><i class="icon-people fa-fw"></i> <span class="hide-menu">Review Mangement</span>
+                </a>
+            </li>
+
+
+            <li>
+                <a href="javascript:void(0);" class="waves-effect"><i class="icon-people fa-fw"></i> <span class="hide-menu">Outlets<span class="fa arrow"></span></span>
+                </a>
+                <ul class="nav nav-second-level collapse">
+                    <li> <a href="<?php echo ADMIN_BASE_URL ?>outlets">Management</a></li>
+                    <li> <a href="<?php echo ADMIN_BASE_URL ?>outlets/addedit/">Outlet Add</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
