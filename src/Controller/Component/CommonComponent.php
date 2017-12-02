@@ -275,6 +275,29 @@ class CommonComponent extends Component
             return $miles.' mi';
         }
     }
+
+    function generateId($refid)
+    {
+
+        if (!empty($refid) && ($refid > 0))
+        {
+            if ($refid < 10)
+            {
+                $generate = '000' . $refid;
+            } elseif (($refid >= 10) && ($refid < 100))
+            {
+                $generate = '00' . $refid;
+            } elseif (($refid >= 100) && ($refid < 1000))
+            {
+                $generate = '0' . $refid;
+            } else
+            {
+                $generate = $refid;
+            }
+        }
+
+        return $generate;
+    }
 //-----------------------------------------------------------------------------------------------------------------
 }//class end...
 ?>

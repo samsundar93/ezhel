@@ -59,6 +59,17 @@ class UsersController extends AppController
             $projectPatchEntity->customer_id = $this->Auth->user('user_id');
             $projectId = $this->Projects->save($projectPatchEntity);
 
+            if($projectId) {
+
+                $ordergenid = $this->Common->generateId($projectId->id);
+                $finalorderid = "EHL".$ordergenid;
+
+                $orderUpdate['project_number']  =  $finalorderid;
+                $orderUpdate['id']                =  $projectId->id;
+                $leadsupdt = $this->Projects->patchEntity($projectEntity,$orderUpdate);
+                $leadssave = $this->Projects->save($leadsupdt);
+            }
+
             $questions = $this->request->session()->read('requestForm.question');
 
             //Projects Questions
@@ -94,20 +105,30 @@ class UsersController extends AppController
         if($this->request->data['username'] != '' && $this->request->data['password'] != '') {
 
             $user           = $this->Auth->identify();
-            //echo "<pre>";print_r($user);
+
             if(count($user) != 0)
                 $sp_status      = $this->Customers->find('all', [
-                    'fields' => ['status']
-                    ,'conditions' => ['user_id ='=> $user['id']] ])
-                    ->hydrate(false)->toArray();
+                    'fields' => [
+                        'status'
+                    ],
+                    'conditions' => [
+                        'id ='=> $user['user_id']
+                    ]
+                ])->hydrate(false)->toArray();
 
             if(count($sp_status) != 0 && !empty($sp_status[0]['status']) && $sp_status[0]['status'] == '1' &&
                 $user['role_id'] == '5'){
                 $this->Auth->setUser($user);
                 $username   = $this->Customers->find('all',[
-                    'fields' => ['name','id']
-                    ,'conditions' => ['user_id ='=> $this->Auth->user('id')] ])
-                    ->hydrate(false)->first();
+                    'fields' => [
+                        'name',
+                        'id'
+                    ],
+                    'conditions' => [
+                        'id ='=> $this->Auth->user('user_id')
+                    ]
+                ])->hydrate(false)->first();
+
                 $this->request->session()->write('customername',$username['name']);
                 $this->Flash->success(__('Login successful.'));
                 echo 1;exit();
@@ -161,6 +182,7 @@ class UsersController extends AppController
     }
 
     public function setLanguage() {
+
         $this->request->session()->write('sessionLang',$this->request->data['lang']);
         die();
     }

@@ -16,6 +16,7 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\I18n\I18n;
 
 /**
  * Application Controller
@@ -53,6 +54,71 @@ class AppController extends Controller
          */
         //$this->loadComponent('Security');
         //$this->loadComponent('Csrf');
+
+        $this->prefix = (!empty($this->request->params['prefix']))
+            ? $this->request->params['prefix'] : '';
+
+
+        if ($this->prefix === 'ezheladmin') {
+            $this->loadComponent('Auth', [
+                'loginRedirect' => [
+                    'controller' => 'Users',
+                    'action' => 'login'
+                ],
+                'logoutRedirect' => [
+                    'controller' => 'Users',
+                    'action' => 'logout'
+                ]
+            ]);
+
+            if (!empty($this->Auth->user()) && $this->Auth->user('role_id') === 2) {
+                $this->Flash->success('Please logout our frontend');
+                return $this->redirect(BASE_URL);
+            }
+        } else if ($this->prefix === 'partners') {
+
+            $this->loadComponent('Auth', [
+                'loginRedirect' => [
+                    'controller' => 'Users',
+                    'action' => 'login'
+                ],
+                'logoutRedirect' => [
+                    'controller' => 'Users',
+                    'action' => 'logout'
+                ]
+            ]);
+
+            if (!empty($this->Auth->user()) && $this->Auth->user('role_id') === 1) {
+                $this->Flash->success('Please logout our Admin panel');
+                return $this->redirect(ADMIN_BASE_URL);
+            }else if (!empty($this->Auth->user()) && $this->Auth->user('role_id') === 4) {
+                $this->Flash->success('Please logout our customer panel');
+                return $this->redirect(BASE_URL);
+            }
+        }else {
+
+            $this->loadComponent('Auth', [
+                'loginRedirect' => [
+                    'controller' => 'Users',
+                    'action' => 'index'
+                ],
+                'logoutRedirect' => [
+                    'controller' => 'Users',
+                    'action' => 'logout'
+                ]
+            ]);
+
+            if (!empty($this->Auth->user()) && $this->Auth->user('role_id') === 1) {
+                $this->Flash->success('Please logout our Admin panel');
+                return $this->redirect(ADMIN_BASE_URL);
+            }else if (!empty($this->Auth->user()) && $this->Auth->user('role_id') === 2) {
+                $this->Flash->success('Please logout our partner panel');
+                return $this->redirect(BASE_URL.'partners');
+            }
+
+        }
+
+
         $this->settingsDetails();
         $controller = $this->request->params['controller'];
         $action     = $this->request->params['action'];
@@ -74,6 +140,32 @@ class AppController extends Controller
         if($currentLanguage == '') {
             $this->request->session()->write('sessionLang','AR');
         }
+
+        if($this->request->session()->read('sessionLang') == 'EN') {
+            I18n::locale('en_US');
+        }else {
+            I18n::locale('es_AR');
+        }
+
+        $base_path = ROOT . '/tmp';
+        $models      = $base_path.'/cache/models';
+        $persistent  = $base_path.'/cache/persistent';
+        $cache_files = array($models,$persistent);
+
+
+        //To delete Cache files
+        foreach ($cache_files as $filepath) {
+            $filepath = $filepath.'/*';
+            $files = glob($filepath); //get all file names
+            foreach($files as $file){
+                if(is_file($file))
+                    unlink($file); //delete file
+            }
+        }
+        //echo __x('written communication', 'He read the first letter');die();
+        //echo __x('My name is name');die();
+
+
         $this->set(compact('controller', 'action','languageList'));
     }
 

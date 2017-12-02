@@ -15,7 +15,7 @@
                 <div class="col-sm-6 no-padding">
                     <div class="col-sm-4">
                         <div class="service-profile-image">
-                            <img src="../img/mercy.jpg">
+                            <img src="../../img/mercy.jpg">
                         </div>
                     </div>
                     <div class="col-sm-8">

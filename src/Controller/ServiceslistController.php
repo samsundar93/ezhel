@@ -53,13 +53,31 @@ class ServiceslistController extends AppController
 
             //$fromTime = strtotime('06:00 AM');
             //$toTime = strtotime('02:00 PM');
-            $latlng = $this->Common->latlang($this->request->session()->read('requestForm.service_area'));
-            if(!empty($latlng)) {
-                $sourcelatitude = $latlng[0];
-                $sourcelongitude = $latlng[1];
-                $this->request->session()->write('sourcelatitude',$sourcelatitude);
-                $this->request->session()->write('sourcelongitude',$sourcelongitude);
-            }
+
+            //$latlng = $this->Common->latlang($this->request->session()->read('requestForm.service_area'));
+
+            $prepAddr = str_replace(' ','+',$this->request->session()->read('requestForm.service_area'));
+
+            $url = "https://maps.google.com/maps/api/geocode/json?address=$prepAddr&key=AIzaSyA_PDTRdxnfHvK3V6-pApjZQgY8F8E5zOM&sensor=false&region=India";
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+            $response = curl_exec($ch);
+            curl_close($ch);
+            $response_a = json_decode($response);
+
+            /*$sourcelatitude = $output->results[0]->geometry->location->lat;
+            $sourcelongitude = $output->results[0]->geometry->location->lng;*/
+
+            $sourcelatitude = $response_a->results[0]->geometry->location->lat;
+            $sourcelongitude = $response_a->results[0]->geometry->location->lng;
+
+            $this->request->session()->write('sourcelatitude',$sourcelatitude);
+            $this->request->session()->write('sourcelongitude',$sourcelongitude);
+
 
             $serviceList = [];
 
@@ -77,16 +95,16 @@ class ServiceslistController extends AppController
                         //pr($dayExplode);
                         if(!empty($dayExplode)) {
                             foreach($dayExplode as $dkey => $dvalue) {
+                                //echo $dayExplode[$dkey];die();
+                                $dayStatus = $serviceProviderLists[$key][$dvalue.'_status'];
+                                $serviceOpenTime = strtotime($serviceProviderLists[$key][$dvalue.'_firstopen_time']);
+                                $serviceCloseTime = strtotime($serviceProviderLists[$key][$dvalue.'_secondopen_time']);
 
-                                $dayStatus = $serviceProviderLists[$key][$dayExplode[$dkey].'_status'];
-                                $serviceOpenTime = strtotime($serviceProviderLists[$key][$dayExplode[$dkey].'_firstopen_time']);
-                                $serviceCloseTime = strtotime($serviceProviderLists[$key][$dayExplode[$dkey].'_secondopen_time']);
 
                                 if($fromTime > $serviceOpenTime && $toTime <= $serviceCloseTime && $dayStatus != 'Close') {
                                     $countOfDay--;
                                 }
                             }
-                            //echo 'count--------------'.$countOfDay;
                             if($countOfDay == 0) {
                                 $latitudeTo  = $serviceProviderLists[$key]['service_lat'];
                                 $longitudeTo = $serviceProviderLists[$key]['service_log'];
@@ -96,6 +114,8 @@ class ServiceslistController extends AppController
 
 
                                 $distance = str_replace(',','',$distance);
+
+
 
                                 if($distance <= $serviceProviderLists[$key]['service_radius']) {
                                     $serviceProviderLists[$key]['to_distance'] = $distance;

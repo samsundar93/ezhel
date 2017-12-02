@@ -61,6 +61,18 @@ Router::scope('/', function ($routes) {
         );
         $routes->fallbacks('InflectedRoute');
     });
+
+    Router::prefix('partners', function ($routes) {
+        $routes->connect('/', [
+                'controller' => 'Users',
+                'action' => 'login'
+            ]
+        );
+        $routes->fallbacks('InflectedRoute');
+    });
+
+
+
     $routes->fallbacks(DashedRoute::class);
 });
 

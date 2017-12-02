@@ -25,6 +25,11 @@ class ProjectsTable extends Table
             'className' 	=> 'Serviceproviders',
             'foreignKey' 	=> 'serviceprovider_id'
         ]);
+
+        $this->belongsTo('SubCategories',[
+            'className' 	=> 'SubCategories',
+            'foreignKey' 	=> 'subcategory'
+        ]);
     }
 
 

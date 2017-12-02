@@ -181,11 +181,15 @@ class PartnersController extends AppController
 
         $pendingProjects = $this->Projects->find('all', [
             'conditions' => [
-                'serviceprovider_id' => $this->Auth->user('user_id'),
-                'status' => 'pending',
-                'delete_status' => 'N'
+                'Projects.serviceprovider_id' => $this->Auth->user('user_id'),
+                'Projects.status' => 'pending',
+                'Projects.delete_status' => 'N'
+            ],
+            'contain' => [
+                'SubCategories'
             ]
         ])->hydrate(false)->toArray();
+        //pr($pendingProjects);die();
 
         $processingProjects = $this->Projects->find('all', [
             'conditions' => [
@@ -194,6 +198,8 @@ class PartnersController extends AppController
                 'delete_status' => 'N'
             ]
         ])->hydrate(false)->toArray();
+
+        $this->set(compact('pendingProjects','processingProjects'));
     }
 
     public function pendingView($id = null) {

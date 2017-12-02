@@ -14,19 +14,19 @@
                 Dashboard</a>
         </li>
         <li>
-            <a href="<?php echo BASE_URL ?>partners/project" data-ul="three"><i class="fa fa-tasks" aria-hidden="true"></i>
+            <a href="<?php echo BASE_URL ?>partners/projects" data-ul="three"><i class="fa fa-tasks" aria-hidden="true"></i>
                 Projects</a>
         </li>
         <li>
-            <a href="<?php echo BASE_URL ?>partners/history" data-ul="three"><i class="fa fa-history" aria-hidden="true"></i>
+            <a href="<?php echo BASE_URL ?>partners/projects/history" data-ul="three"><i class="fa fa-history" aria-hidden="true"></i>
                 History</a>
         </li>
         <li>
-            <a href="<?php echo BASE_URL ?>partners/workphoto" data-ul="three"><i class="fa fa-picture-o" aria-hidden="true"></i>
+            <a href="<?php echo BASE_URL ?>partners/partners/workphoto" data-ul="three"><i class="fa fa-picture-o" aria-hidden="true"></i>
                 Work photos &videos</a>
         </li>
         <li>
-            <a href="<?php echo BASE_URL ?>partners/profile" data-ul="three"><i class="fa fa-user-circle" aria-hidden="true"></i>
+            <a href="<?php echo BASE_URL ?>partners/users/profile" data-ul="three"><i class="fa fa-user-circle" aria-hidden="true"></i>
                 Profile</a>
         </li>
         <li class="hide">
@@ -34,7 +34,7 @@
                 Job Request</a>
         </li>
         <li>
-            <a href="<?php echo BASE_URL ?>partners/myaccount" data-ul="three"><i class="fa fa-user"></i> My Account</a>
+            <a href="<?php echo BASE_URL ?>partners/users/myaccount" data-ul="three"><i class="fa fa-user"></i> My Account</a>
         </li>
         <li class="hide">
             <a href="#" data-ul="three"><i class="fa fa-users" aria-hidden="true"></i>

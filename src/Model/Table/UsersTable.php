@@ -25,7 +25,8 @@ class UsersTable extends Table
         $this->belongsTo('Subusers',[
             'className' => 'Subusers',
             'foreignKey' => 'user_id'
-        ]);		
+        ]);
+
 	}
 
 	

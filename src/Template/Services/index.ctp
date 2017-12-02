@@ -1,23 +1,25 @@
 <section>
     <div class="container">
         <div class="service-title">What Kind of Service do you need?</div>
-        <input type="hidden" id="logginUser" value="<?php echo (isset($logginUser['user_id'])) ? $logginUser['user_id'] : ''; ?>">
-        <input type="hidden" id="logginRole" value="<?php echo (isset($logginUser['role_id'])) ? $logginUser['role_id'] : ''; ?>">
         <?php foreach($mainServiceList as $key => $value) { ?>
             <?php if (!empty($value['sub_categories'])) { ?>
                 <div class="col-sm-3 m-b-30">
 
-                    <a onclick="showchild('<?php echo $value['id'] ?>')" <!--data-toggle="modal"  data-target="#child-care-popup_dataid--><?php /*echo $value['id'] */?>">
+
                         <input class="hide jobtype" id="child-care" name="jobtype" type="radio">
                         <label class="lets-do-tel-craft" for="child-care">
                             <div class="kind-service">
-                                <div class="kind-service-img">
-                                    <img src="<?php echo BASE_URL ?>images/maincategory/<?php echo $value['maincat_photo'] ?>">
-                                </div>
-                                <div class="kind-service-text"><?php echo $value['maincatname']; ?></div>
+                                <a onclick="showchild('<?php echo $value['id'] ?>')">
+                                    <div class="kind-service-img">
+                                        <img src="<?php echo BASE_URL ?>images/maincategory/<?php echo $value['maincat_photo'] ?>">
+                                    </div>
+                                    <div class="kind-service-text">
+                                        <?php echo $value['maincatname']; ?>
+                                    </div>
+                                </a>
                             </div>
                         </label>
-                    </a>
+
                 </div>
             <?php }
         }?>
@@ -33,6 +35,8 @@
             //'url' => BASE_URL.'serviceslist'
         ));
         ?>
+        <input type="hidden" id="logginUser" value="<?php echo (isset($logginUser['user_id'])) ? $logginUser['user_id'] : ''; ?>">
+        <input type="hidden" id="logginRole" value="<?php echo (isset($logginUser['role_id'])) ? $logginUser['role_id'] : ''; ?>">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header clearfix">

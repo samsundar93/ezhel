@@ -92,6 +92,8 @@ define('ADMIN_BASE_URL','http://'.(($site == 'local') ? ($_SERVER['SERVER_NAME']
 
 define('LOCATION_IMG','http://'.(($site == 'local') ? ($_SERVER['SERVER_NAME'].'/subversion/ezhelnew/img/location.png') : ($_SERVER['SERVER_NAME'].'/img/location.png')));
 
+define('PARTNER_BASE_URL',BASE_URL.'partners/');
+
 define('BACK_LOADINGIMAGE', BASE_URL."webroot/backend/images/");
 define('FRONT_LOADINGIMAGE', BASE_URL."webroot/images/");
 define('ADMINPROFILE_PHOTO_PATH', WWW_ROOT."backend/images/adminprofile_photo/");

@@ -7,8 +7,15 @@
         FRONT_CSS.'slick.css',
         FRONT_CSS.'slick-theme.css',
         FRONT_CSS.'style.css',
-        FRONT_CSS.'arabic.css'
+        //FRONT_CSS.'arabic.css'
     ]);
+
+    if($this->request->session()->read('sessionLang') == 'AR') {
+        echo $this->Html->css([
+            FRONT_CSS.'arabic.css'
+        ]);
+
+    }
 
     if($controller == 'Services') {
         echo $this->Html->css([

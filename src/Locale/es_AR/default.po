@@ -1,0 +1,80 @@
+msgid "Lets Get Started. Choose an option"
+msgstr "هيا بنا نبدأ. إختر خيار"
+
+msgid "Join Us a Professional"
+msgstr "الانضمام إلينا المهنية"
+
+msgid "Login"
+msgstr "تسجيل الدخول"
+
+msgid "Signup"
+msgstr "سجل"
+
+msgid "Find Service"
+msgstr "البحث عن خدمة"
+
+msgid "Customer Stories"
+msgstr "قصص العملاء"
+
+msgid "Learn more"
+msgstr "أعرف أكثر"
+
+msgid "FAQ"
+msgstr "التعليمات"
+
+msgid "Terms & Condition"
+msgstr "الشروط والأحكام"
+
+msgid "Privacy Policy"
+msgstr "سياسة الخصوصية"
+
+msgid "Company"
+msgstr "شركة"
+
+msgid "About Us"
+msgstr "معلومات عنا"
+
+msgid "Blog"
+msgstr "مدونة"
+
+msgid "Reviews"
+msgstr "التعليقات"
+
+msgid "Coupons"
+msgstr "كوبونات"
+
+msgid "Quick links"
+msgstr "روابط سريعة"
+
+msgid "How it Works"
+msgstr "كيف تعمل"
+
+msgid "Contact Us"
+msgstr "اتصل بنا"
+
+msgid "Join Us a Professional"
+msgstr "الانضمام إلينا المهنية"
+
+msgid "Connect With US"
+msgstr "اتصل بنا"
+
+msgid "Facebook"
+msgstr "فيس بوك"
+
+msgid "Twitter"
+msgstr "تغريد"
+
+msgid "Linkedin"
+msgstr "تابعني على"
+
+msgid "Copyright"
+msgstr "حقوق النشر"
+
+msgid "All Rights Reserved"
+msgstr "كل الحقوق محفوظة"
+
+msgid "Myaccount"
+msgstr "حسابي"
+
+msgid "Logout"
+msgstr "الخروج"

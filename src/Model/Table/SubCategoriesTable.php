@@ -29,6 +29,11 @@ class SubCategoriesTable extends Table
             'dependent' => true,
             'cascadeCallbacks' => true
         ]);
+
+        $this->belongsTo('Projects',[
+            'className' 	=> 'Projects',
+            'foreignKey' 	=> 'subcategory'
+        ]);
         
 	}
 
