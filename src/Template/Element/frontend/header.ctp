@@ -1,8 +1,19 @@
 <header>
     <div class="container">
         <div class="row">
-            <a class="logo" href="<?php echo BASE_URL ?>"><h1>EZHEL</h1></a>
-            <!-- <span id="showRightPush" class="toogle navSlideMenu hidden-sm hidden-md hidden-lg"> <i class="fa fa-bars"></i></span> -->
+            <a class="logo" href="<?php echo BASE_URL ?>"><span class="logo-txt">EZHEL</span></a>
+            <span class="language-cls visible-xs" >
+                    <?= $this->Form->input('cat_id', [
+                        'type' => 'select',
+                        'options' => $languageList,
+                        'value' => $this->request->session()->read('sessionLang'),
+                        'class' => 'form-control',
+                        'onchange' => 'return selectLanguage(this.value)',
+                        'label' => false
+                    ]) ?>
+            </span>
+            <span id="menu-icon">
+                <span class="pull-right visible-xs menubar" onclick="openNav()"><i class="fa fa-bars" aria-hidden="true"></i></span></span>
             <ul class="headerlist pull-right hidden-xs">
                 <li><a target="_blank" href="<?php echo BASE_URL ?>partners/signup">Join Us a Professional</a></li>
                 <?php if(isset($logginUser) && empty($logginUser)) { ?>
@@ -29,11 +40,20 @@
 
         </div>
     </div>
-    <!--  <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
-     <span id="menuHide" class="navSlideMenuClose"><i class="fa fa-window-close" aria-hidden="true"></i></span>
-     <a class="SlideMenuClose" href="#">Join Us a Professional</a>
-     <a class="SlideMenuClose" href="#">Login/Signup</a>
-   </nav> -->
+    <ul id="mobilemenu" class="visible-xs">
+          <li><a target="_blank" href="<?php echo BASE_URL ?>partners/signup">Join Us a Professional</a></li>
+                <?php if(isset($logginUser) && empty($logginUser)) { ?>
+                    <li><a data-toggle="modal" data-target="#login_modal">Login</a></li>
+                    <li><a data-toggle="modal" data-target="#signup_pop">Signup</a></li>
+                <?php }else if($logginUser['role_id'] == '5'){ ?>
+                    <li><a href="<?php echo BASE_URL ?>customers/dashboard">Myaccount</a></li>
+                    <li><a href="<?php echo BASE_URL ?>users/customerLogout">Logout</a></li>
+                <?php }else { ?>
+                    <li><a href="<?php echo BASE_URL ?>partners/dashboard">Myaccount</a></li>
+                    <li><a href="<?php echo BASE_URL ?>partners/partnerLogout">Logout</a></li>
+                <?php } ?>
+                
+    </ul>
 </header>
 
 

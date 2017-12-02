@@ -239,3 +239,7 @@ hr {
         max-width: 940px;
     }
 }
+@media screen (max-width: 767px) {
+        body {overflow-x:hidden !important;}
+
+}

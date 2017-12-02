@@ -1,3 +1,4 @@
+
 (function( $ ) {
 
     //Function to animate slider captions 
@@ -131,12 +132,25 @@
           });
   } );
 
-      $(document).ready(function(){
-        $('.multiple-items').slick({
-            infinite: true,
-            slidesToShow: 3,
-            slidesToScroll: 3
-          });
+$(document).ready(function(){
+    $('.multiple-items').slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        rtl: true,
+            responsive: [
+                {
+                breakpoint: 768,
+                settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                infinite: true,
+                dots: false,
+                rtl: true,
+                }
+            }
+            ]    
+    });
 });
 $(document).ready(function(){
     $('.on-pending-btn li a').click(function(){
@@ -445,4 +459,23 @@ function changePassword() {
             }
         });return false;
     }
+}
+
+function openNav() {
+    document.getElementById("mobilemenu").style.width = "100%";
+    document.getElementById("menu-icon").innerHTML = '<span class="pull-right visible-xs menubar" onclick="closeNav()"><i class="fa fa-times" aria-hidden="true"></i></span>';
+}
+
+function closeNav() {
+    document.getElementById("mobilemenu").style.width = "0%";
+    document.getElementById("menu-icon").innerHTML = '<span class="pull-right visible-xs menubar" onclick="openNav()"><i class="fa fa-bars" aria-hidden="true"></i></span>';
+}
+function otheropenNav() {
+    document.getElementById("second-mobilemenu").style.width = "100%";
+    document.getElementById("menu-icon").innerHTML = '<span class="pull-right visible-xs menubar second-menubar" onclick="othercloseNav()"><i class="fa fa-times" aria-hidden="true"></i></span>';
+}
+
+function othercloseNav() {
+    document.getElementById("second-mobilemenu").style.width = "0%";
+    document.getElementById("menu-icon").innerHTML = '<span class="pull-right visible-xs menubar second-menubar" onclick="otheropenNav()"><i class="fa fa-bars" aria-hidden="true"></i></span>';
 }

@@ -35,7 +35,7 @@
 <section id="about-us">
     <div class="container">
         <div class="text-center">
-            <div class="col-sm-8 col-sm-offset-2">
+            <div class="col-xs-12">
                 <h2 class="title-one">Lets Get Started. Choose an option</h2>
 
             </div>
@@ -66,7 +66,7 @@
 <section class="what_weoffer">
     <div class="container">
         <div class="text-center">
-            <div class="col-sm-8 col-sm-offset-2 padding-bottom-40">
+            <div class="col-xs-12 padding-bottom-40">
                 <h2 class="title-one">What we offer</h2>
             </div>
         </div>
@@ -88,7 +88,7 @@
 
 <section class="customer_stories">
     <div class="text-center">
-        <div class="col-sm-8 col-sm-offset-2 padding-bottom-40">
+        <div class="col-xs-12 padding-bottom-40">
             <h2 class="title-one">Customer Stories</h2>
         </div>
     </div>
@@ -193,13 +193,13 @@
 
 <section class="childcare_app_section">
     <div class="container">
-        <div class="col-xs-6 padding-top-50">
+        <div class="col-xs-12 col-sm-6 padding-top-50">
             <div class="childcare_app_title">Download the App</div>
             <div class="childcare_app_cont">Lorem ipsum dolor sit amet, consectetur adipisicing elit, et do Lorem ipsum dolor sit amet, consectetur
             </div>
             <div class="app-icon"><span><img src="images/google-play.png"></span><span><img src="images/apple-play.png"></span></div>
         </div>
-        <div class="col-xs-6">
+        <div class="col-xs-12 col-sm-6">
             <div class="app_pic"><img src="images/mobile.png"></div>
         </div>
     </div>

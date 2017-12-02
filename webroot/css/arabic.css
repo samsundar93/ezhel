@@ -1,0 +1,16 @@
+
+html {direction: rtl !important;}
+.logo {float: right !important;}
+.headerlist li {float: right !important; }
+.pull-right {float: left !important;}
+[class*="col-"] {
+    float: right !important;
+}
+.app-icon {float:right;}
+.app-icon span {float: right;}
+.foot-cont ul {text-align: right;}
+.foot-cont h5 {text-align: right;}
+.slick-slide{float:right;}
+.slick-slide .col-sm-6.col-xs-12{float:right;}
+.search-product-h2{text-align:right;}
+.slick-slide .col-xs-5.no-padding{float:right;}

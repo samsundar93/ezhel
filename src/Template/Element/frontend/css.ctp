@@ -3,10 +3,11 @@
     echo $this->Html->css([
         FRONT_CSS.'bootstrap.min.css',
        // FRONT_CSS.'font-awesome.min.css',
-        FRONT_CSS.'style.css',
         FRONT_CSS.'responsive.css',
         FRONT_CSS.'slick.css',
-        FRONT_CSS.'slick-theme.css'
+        FRONT_CSS.'slick-theme.css',
+        FRONT_CSS.'style.css',
+        FRONT_CSS.'arabic.css'
     ]);
 
     if($controller == 'Services') {

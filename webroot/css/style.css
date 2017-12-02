@@ -5,10 +5,12 @@ body {
     position: relative;
     font-weight:400;
     background: #fff;
-    color:#43484E
+    color:#43484E;
+
 }
-
-
+html {
+   
+}
 
 a:hover {
     outline: none;
@@ -31,6 +33,7 @@ a {
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Roboto', sans-serif;
 }
+
 
 .slider-btn {
     background-color:#1996e6;
@@ -208,7 +211,11 @@ header {
     width: 100%;
     z-index: 10;
 }
-.logo {float: left;}
+.logo {float: left !important;
+display: inline-block !important;
+font-size: 35px !important;
+font-weight: bold !important;
+padding: 10px !important;}
 .log img {max-width:245px; width: 100%; height: 75px; }
 .headerli {float: right; margin: 0px 0px 0px 0px;}
 ul {list-style: outside none none;}
@@ -1445,6 +1452,9 @@ footer {
 }
 .foot {
     border-top:1px solid #2d2d2d;
+    background: #333 !important;
+    float: left;
+    width: 100%;
 }
 .skype {
     font:25px 'Roboto', sans-serif;
@@ -1473,7 +1483,6 @@ footer {
     text-align:center;
     margin:0px;
     color:#e0e0e0;
-    padding:30px 0;
 }
 .mobile {
     display:none;
@@ -1628,8 +1637,8 @@ footer {
 
 
 .childcare_app_section {float: left; width: 100%; background: #fff;border-top:1px solid #e4e4e4;}
-.childcare_app_title {float: left; width: 100%; color: #000000; font: 30px "proximanova-semibold";}
-.childcare_app_cont {float: left; width: 100%; color: #000000; font: 16px "Proxima-Nova"; padding: 20px 0px;}
+.childcare_app_title {float: left; width: 100%; color: #000000; font-size: 30px;}
+.childcare_app_cont {float: left; width: 100%; color: #000000; font-size: 16px; padding: 20px 0px;}
 .childcare_app_list {float: left; width: 100%;}
 .childcare_app_list ul{float: left; width: 100%; margin-bottom: 0; padding: 20px;}
 .app-icon {float: left; width: 100%;}
@@ -1817,7 +1826,7 @@ footer {
     color: #fff !important; text-decoration: none !important;}
 .nav-tabs .active a {color: #fff !important;}
 .nav-tabs li a {background: none !important; border:none !important; padding: 0 !important;}
-
+.carousel-indicators {z-index: 9 !important;}
 .slider-btn {
     background-color: #1996e6;
     border: 0 none;
@@ -1867,3 +1876,55 @@ footer {
 .termsuse {float: left; width: 100%; text-align:center; font:14px "Open Sans"; padding-top: 30px;}
 .donthave {float: left; width: 100%; text-align: center;font:12px "Open Sans"; padding-top: 15px;}
 .signin-box .myform-control {height: 40px;}
+
+
+
+
+@media screen and (max-width: 767px) {
+       .main-wrapper {float: left; width: 100%; overflow-x:hidden !important;}
+   .logo-text {
+float: left !important;
+display: inline-block !important;
+font-size: 35px !important;
+font-weight: bold !important;
+padding: 10px !important;
+}
+.language-cls {
+    float: left;
+display: inline-block;
+width: 80px;
+margin-top: 20px;
+margin-left: 30px;
+}
+.title-one {font-size: 20px !important;}
+.menubar {color: #1996e6; font-size: 20px; margin:20px!important; cursor: pointer;}
+ #mobilemenu {
+        float: right;
+        width: 0%;
+        height: 100%;
+        background:rgba(0,0,0,0.95);
+        position: fixed;
+        top:65px;
+        right: 0;
+        width: 0;
+        z-index: 1;
+        overflow-x: hidden;
+        transition: 0.5s;
+        margin: 0;
+        padding: 0;
+    }
+    #mobilemenu li {float: left; width: 100%; text-align: right;list-style: none;border-bottom: 1px solid #999;}
+    #mobilemenu li a {color: #fff; padding: 15px;display: block; float: left;}
+    .find_service {margin-bottom: 20px;}
+    .slick-prev {
+    left: -13px !important;
+    z-index: 1 !important;;
+}
+.slick-next {
+    right: -3px !important;;
+}
+}
+
+
+
+/*--------arabic cssssssssss-----------*/
