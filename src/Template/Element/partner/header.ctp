@@ -15,8 +15,8 @@
             <span id="menu-icon">
                 <span class="pull-right visible-xs menubar" onclick="openNav()"><i class="fa fa-bars" aria-hidden="true"></i></span></span>
             <ul class="headerlist pull-right hidden-xs">
-                <li><a target="_blank" href="<?php echo BASE_URL ?>partners/users/signup">Join Us a Professional</a></li>
                 <?php if(isset($logginUser) && empty($logginUser)) { ?>
+                    <li><a target="_blank" href="<?php echo BASE_URL ?>partners/signup">Join Us a Professional</a></li>
                     <li><a data-toggle="modal" data-target="#login_modal">Login</a></li>
                     <li><a data-toggle="modal" data-target="#signup_pop">Signup</a></li>
                 <?php }else if($logginUser['role_id'] == '5'){ ?>

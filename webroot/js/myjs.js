@@ -342,11 +342,11 @@ function partnerLogin() {
     }else {
         $.ajax({
             type    : "POST",
-            url     : jssitebaseUrl+'partners/partnerLogin',
+            url     : partnerUlr+'users/partnerLogin',
             data    : {username:username,password:password},
             success : function(data){
                 if($.trim(data) == '1') {
-                    window.location.href = jssitebaseUrl+'partners/dashboard';
+                    window.location.href = partnerUlr+'users/dashboard';
                 }else if($.trim(data) == '2') {
                     $("#spuserErr").addClass('error').html('Your has been deactive.Please contact Admin');
                     return false;

@@ -80,7 +80,7 @@ class AppController extends Controller
             $this->loadComponent('Auth', [
                 'loginRedirect' => [
                     'controller' => 'Users',
-                    'action' => 'login'
+                    'action' => 'signup'
                 ],
                 'logoutRedirect' => [
                     'controller' => 'Users',
@@ -164,6 +164,12 @@ class AppController extends Controller
         }
         //echo __x('written communication', 'He read the first letter');die();
         //echo __x('My name is name');die();
+
+        //Logged User
+        if(!empty($this->Auth->user()))
+            $this->set('logginUser', $this->Auth->user());
+        else
+            $this->set('logginUser', '');
 
 
         $this->set(compact('controller', 'action','languageList'));

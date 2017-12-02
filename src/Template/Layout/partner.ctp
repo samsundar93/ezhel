@@ -9,7 +9,7 @@
 
     <title>Klikly</title>
     <?= $this->Html->meta('icon') ?>
-    <?= $this->element('frontend/css') ?>
+    <?= $this->element('partner/css') ?>
     <script>
         var partnerUlr = "<?php echo BASE_URL; ?>partners/";
     </script>
@@ -17,21 +17,34 @@
 </head>
 <body>
 <?=
-$this->element('frontend/header');
+$this->element('partner/header');
 ?>
 <?php echo $this->Flash->render(); ?>
 
 <div class="pending_wrapper">
     <?php
-    echo $this->element('frontend/sidebar'); ?>
+    if(!empty($logginUser)) { ?>
+    <div class="pending_wrapper">
+        <?php
+        echo $this->element('frontend/sidebar'); ?>
 
-    <?= $this->fetch('content') ?>
+        <?php
+        }
+        ?>
+
+        <?= $this->fetch('content') ?>
+
+        <?php if(!empty($logginUser)) { ?>
+            </div>
+        <?php
+        }
+        ?>
 </div>
 
 <footer class="site-footer" style = "Background-color:#000000;">
-    <?= $this->element('frontend/footer') ?>
+    <?= $this->element('partner/footer') ?>
 </footer>
-<?= $this->element('frontend/js') ?>
+<?= $this->element('partner/js') ?>
 
 
 </body>

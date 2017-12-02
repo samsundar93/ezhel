@@ -22,8 +22,88 @@ class UsersController extends AppController
     public function beforeFilter(Event $event)
     {
         $this->Auth->allow([
-            'login'
+            'login',
+            'signup',
+            'partnerLogin'
         ]);
+    }
+
+    public function signup() {
+        if($this->request->is('post')) {
+
+            $this->loadModel('Serviceproviders');
+            $this->loadModel('Users');
+
+            //Service provider
+            $spEntity                 = $this->Serviceproviders->newEntity();
+            $spUdtPatch               = $this->Serviceproviders->patchEntity($spEntity, $this->request->data);
+            $spSave                   = $this->Serviceproviders->save($spUdtPatch);
+
+            //Users
+            $udtUser['sp_username']            = $this->request->data['username'];
+            $udtUser['sp_password']            = $this->request->data['password'];
+            $udtUser['role_id']             = '2';
+            $udtUser['status']              = '1';
+            $udtUser['user_id']             = $spSave->id;
+            $userEntity                     = $this->Users->newEntity();
+            $userUdtPatch                   = $this->Users->patchEntity($userEntity, $udtUser);
+            $userSave                       = $this->Users->save($userUdtPatch);
+            if($userSave) {
+                $this->Flash->success(__('Registered successful. Admin will contact soon'));
+                return $this->redirect(BASE_URL.'partners/signup');
+            }
+
+        }
+
+    }
+
+    public function partnerLogin()
+    {
+        //Load Model
+        $this->loadModel('Serviceproviders');
+        $this->loadModel('Users');
+
+        if($this->request->data['username'] != '' && $this->request->data['password'] != ''){
+
+            $this->Auth->config('authenticate', [
+                'Form' => [
+                    'fields' => [
+                        'username' => 'sp_username',
+                        'password' => 'sp_password'
+                    ]
+                ]
+            ]);
+            $this->request->data['sp_username'] = $this->request->data['username'];
+            $this->request->data['sp_password'] = $this->request->data['password'];
+
+            $user           = $this->Auth->identify();
+            //echo "<pre>";print_r($user);die();
+            if(!empty($user)) {
+                $sp_status      = $this->Serviceproviders->find('all', [
+                    'fields' => ['status']
+                    ,'conditions' => ['id ='=> $user['user_id']] ])
+                    ->hydrate(false)->toArray();
+
+                if(count($sp_status) != 0 && ($sp_status[0]['status'] == '0' || $sp_status[0]['status'] == '1' ) && $user['role_id'] == '2'){
+                    $this->Auth->setUser($user);
+                    $username   = $this->Serviceproviders->find('all',[
+                        'fields' => 'firstname'
+                        ,'conditions' => ['id ='=> $this->Auth->user('user_id')] ])
+                        ->hydrate(false)->first();
+                    $this->request->session()->write('splusername',$username['firstname']);
+                    echo 1;exit();
+                }
+                else if(count($sp_status) != 0 && $sp_status[0]['status'] == 0 && $user['role_id'] == '2'){
+                    echo 2;exit();
+                }
+                else{
+                    echo 3;exit();
+                }
+            }else {
+                echo 4;exit();
+            }
+
+        }
     }
 
     public function login() {

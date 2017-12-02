@@ -165,6 +165,8 @@
         getCoords(sp_address, function(latLng) {
             var rest_lat = latLng.lat();
             var rest_lng = latLng.lng();
+            alert(rest_lat);
+            alert(rest_lng);
 
             var
                 contentCenter = '<span class="infowin">'+sp_address+'</span>';
@@ -212,13 +214,14 @@
     }
 
     function getCoords(address, callback) {
+
         var latLng = [];
         var geocoder = new google.maps.Geocoder();
         geocoder.geocode( { 'address': address}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                 callback(results[0].geometry.location);
             } else {
-
+                alert('error');
             }
         });
     }

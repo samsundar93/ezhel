@@ -5,7 +5,6 @@
         FRONT_CSS.'slick.css',
         FRONT_CSS.'slick-theme.css',
         FRONT_CSS.'style.css',
-        //FRONT_CSS.'arabic.css'
     ]);
 
     if($this->request->session()->read('sessionLang') == 'AR') {
@@ -21,11 +20,7 @@
             FRONT_CSS.'jquery-ui-timepicker-addon.min.css',
         ]);
     }
-if($controller == 'Serviceslist') {
-    echo $this->Html->css([
-        FRONT_CSS.'sweetalert2.min.css',
-    ]);
-}
+
 
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -39,15 +34,7 @@ echo $this->Html->script([
     FRONT_JS.'jquery-ui-sliderAccess.js',
     FRONT_JS.'myjs.js',
 ]);
-
-if($controller == 'Serviceslist') {
-    echo $this->Html->script([
-        FRONT_CSS.'sweetalert2.min.js',
-       //FRONT_JS.'sweetalert2.common.js',
-    ]);
-}
-
-if($controller == 'Services' || ($controller == 'Partners' && ($action == 'signup' || $action == 'profile'))) {
+if($action == 'profile') {
     echo $this->Html->script([
         'https://maps.googleapis.com/maps/api/js?key=AIzaSyAzYAo0kwVA0qTj7iPEedXbAoBx03UI9Lg&libraries=places&region=IN',
 
